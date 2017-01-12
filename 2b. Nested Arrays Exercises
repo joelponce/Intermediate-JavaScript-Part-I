@@ -1,0 +1,39 @@
+//	{ Nested Arrays Exercises }
+
+//Write a function called rotate which takes an array and a number, 
+//	and moves each element however many spaces the number is to the right. 
+//	For the value at the end of the array, rotate should move it back to the beginning.
+
+function rotate(arr, num){
+    var times = num % arr.length;
+    for(var i=0; i < times; i++){
+      arr.unshift(arr.pop());
+    }
+    return arr;
+}
+
+
+//Write a function called makeXOGrid which takes in two parameters, rows and columns, 
+//	and returns an array of arrays with the number of values in each subarray equal to the columns 
+//	parameter and the number of subarrays equal to the rows parameter. 
+//	The values in the sub-arrays should switch between "X" and "O".
+
+/* DISCLAIMER: I was stumped by this exercise so I attempted the next best thing - explaining how the given solution functions */
+function makeXOGrid(rows, columns){
+	var array = []; 						//var holding the result
+	var startWithX = true;					//var used to check which letter to push next (updates at each iteration of the inner loop)
+	for(var i = 0; i < rows; i++){			//begins creating the array of arrays
+		var newRow = [];					//var that will hold each subarray as it is created
+		for(var j = 0; j < columns; j++){	//begins creating the subarrays with values of X and O
+			if(startWithX){					//checks to see if X or O should be pushed next
+				newRow.push("X");
+			} 
+			else {
+				newRow.push("O");			//if startWithX is false, function will push O
+			}
+			startWithX = !startWithX;		//at the end of each iteration, startWithX is updated
+		}									//it will either be false (assigned to it's opposite value) or true (set to itself)
+		array.push(newRow);					//once the subarray is created, function will then push copies of this subarray 
+	}										//as many times as dictated by rows parameter to the initial array var
+	return array;							//returns the newly created array
+}
