@@ -1,0 +1,78 @@
+//	{ Debugging Exercises }
+
+//	Part I
+
+//What does the throw keyword do?
+//	The throw keyword returns an error and stops code execution
+
+//What does the finally keyword do?
+//	finally is keyword used in a try/catch statement that always runs, regardless of where the code stopped
+
+
+//What is the difference between a TypeError and ReferenceError?
+//	A ReferenceError referes to an error in scope while a TypeError refers to an error in types.
+
+//How do you create a snippet in the Chrome dev tools?
+//	Open the console, then click on the sources tab. On the left panel, there is a tab called Snippets.
+//	Right click inside the tab and click "new" to create a snippet.
+
+//In the Chrome dev tools, on the right hand side of the sources tab, there is a "pause" 
+// button which allows you to "pause on caught exceptions." What is an exception?
+//	An exception is an error in a program.
+
+//How do we "catch" errors in JavaScript? Give an example with code for what that might look like.
+//	We "catch" errors using a try/catch block.
+try{
+	undefined();
+}
+catch(e){
+	console.log("The error is ", e);
+}
+
+//1. This is a ReferenceError since we are trying to use a variable that has not been defined.
+//2. This is a TypeError since data.displayInfo is undefined
+//3. This is a TypeError is we are trying to access a property of an undefined value
+//4. This is a ReferenceError since var thing only exists within the scope of the data function
+
+
+//	Part II
+
+//1. The condition inside the loop is incorrect ( > => <)
+for(var i=0; i < 5; i++){
+    console.log(i);
+}
+
+//2. if statement uses and assignment operator instead of a comparison operator (== or ===)
+function addIfEven(num){
+    if(num % 2 === 0){
+        return num + 5;
+    }
+    return num;
+}
+
+//3. Incorrect syntax in the for loop - used , instead of ;
+function loopToFive(){
+    for(var i=0; i < 5; i++){
+        console.log(i);
+    }
+}
+
+//4. Several things: 
+//	 a. Incorrect use of ; after i++ iterator
+//	 b. Conditional statement should check all values in array (numbers.length not numbers.length-1)
+//	 c. Incorrectly used assignment operator instead of comparison operator in if statement
+//	 d. End of if statement should not have a ; before the {}
+//   e. if statements needs to check current location in array not whole array (numbers[i] not numbers)
+//	 f. We need to push the value (numbers[i]) not the index (i) to the evenNumbers array
+//	 g. The return statement is misplaced - should be before the last closing brace }
+function displayEvenNumbers(){
+    var numbers = [1,2,3,4,5,6,7,8];
+    var evenNumbers = [];
+    for(var i=0; i<numbers.length; i++){
+        if(numbers[i] % 2 === 0) {
+            evenNumbers.push(i);
+        }
+    }
+    return evenNumbers;
+}
+displayEvenNumbers();
